@@ -8,7 +8,7 @@ import lombok.Data;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Words{
     
-    private Long id;
+    private Integer id;
     //单词
     private String word;
     

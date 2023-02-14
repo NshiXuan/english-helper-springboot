@@ -12,7 +12,7 @@ import java.util.List;
 public class WordsVo{
     private Integer id;
     private String word;
-    private String level;
+    private Integer level;
     private String meanCn;
     private List<Sentences> sentences;
 }
