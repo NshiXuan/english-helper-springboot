@@ -21,8 +21,8 @@
                    w.mean_cn,
                    w.level,
                    s.id sentence_id,
-                   s.sentence sentence,
-                   s.sentence_cn sentence_cn
+                   s.sentence,
+                   s.sentence_cn
             FROM words w
                      JOIN word_sentence ws on w.id = ws.word_id
                      JOIN sentences s on s.id = ws.sentence_id

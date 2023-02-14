@@ -10,7 +10,6 @@ import java.util.List;
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class WordsVo{
-
     private Integer id;
     private String word;
     private String level;
