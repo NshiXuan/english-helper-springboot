@@ -24,5 +24,5 @@ public interface MapStructs {
   Words reqVo2po(WordsReqVo reqVo);
 
   // 把WordReqVo数据转成List<Sentences>
-  // List<Sentences>
+  // List<Sentences> reqVO2List(List<> reqVo);
 }

@@ -7,7 +7,8 @@ import lombok.Data;
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Sentences{
-    
+    // [{},{}]
+
     private Integer id;
     //例句
     private String sentence;

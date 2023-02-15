@@ -5,6 +5,7 @@ import com.en.mapper.WordsMapper;
 import com.en.pojo.po.Words;
 import com.en.pojo.vo.list.WordsVo;
 import com.en.service.WordsService;
+import org.mapstruct.Mapper;
 import org.springframework.stereotype.Service;
 
 @Service()

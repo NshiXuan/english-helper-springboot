@@ -118,6 +118,35 @@
             </TableInfoDTO>
           </value>
         </entry>
+        <entry key="english.word_sentence">
+          <value>
+            <TableInfoDTO>
+              <option name="comment" value="单词例句映射表" />
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="wordId" />
+                    <option name="type" value="java.lang.Long" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="sentenceId" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="WordSentence" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="english-helper" />
+              <option name="savePackageName" value="com.en" />
+              <option name="savePath" value="./src/main/java/com/en" />
+              <option name="templateGroupName" value="MybatisPlus_SX" />
+            </TableInfoDTO>
+          </value>
+        </entry>
         <entry key="english.words">
           <value>
             <TableInfoDTO>

@@ -22,8 +22,8 @@ public abstract class BaseController<Po, ReqVo> {
   // @RequestParam代表quey
   @DeleteMapping
   public R remove(@NotBlank(message = "id不能为空")
-                       @Min(0) // RequestParam让返回id为query类型
-                       @RequestParam String id) {
+                  @Min(0) // RequestParam让返回id为query类型
+                  @RequestParam String id) {
     String[] idStrs = id.split(",");
     if (getService().removeByIds(Arrays.asList(idStrs))) {
       return R.ok("删除成功");
@@ -39,15 +39,14 @@ public abstract class BaseController<Po, ReqVo> {
     // 把reqVo转成po
     System.out.println(reqVo);
     Po po = getFunction().apply(reqVo);
-    System.out.println(po);
+    System.out.println(po + "po");
 
-    return R.error("测试");
+    // return R.error("测试");
 
-    // if (getService().saveOrUpdate(po)) {
-    //   return R.ok("保存成功");
-    // } else {
-    //   return R.error("保存失败");
-    //   // return JsonVos.error("保存失败");
-    // }
+    if (getService().saveOrUpdate(po)) {
+      return R.ok("保存成功");
+    } else {
+      return R.error("保存失败");
+    }
   }
 }
