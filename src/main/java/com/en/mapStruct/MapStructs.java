@@ -1,7 +1,9 @@
 package com.en.mapStruct;
 
+import com.en.pojo.po.Users;
 import com.en.pojo.po.Words;
 import com.en.pojo.vo.list.WordsVo;
+import com.en.pojo.vo.req.save.UsersReqVo;
 import com.en.pojo.vo.req.save.WordsReqVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -19,6 +21,8 @@ public interface MapStructs {
 
   /* ReqVo -> Po */
   Words reqVo2po(WordsReqVo reqVo);
+
+  Users reqVo2po(UsersReqVo reqVo);
 
   // 把WordReqVo数据转成List<Sentences>
   // List<Sentences> reqVO2List(List<> reqVo);
