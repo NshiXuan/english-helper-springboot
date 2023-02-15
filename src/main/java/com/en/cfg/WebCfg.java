@@ -25,7 +25,7 @@ public class WebCfg implements WebMvcConfigurer {
             // 是否允许发送Cookie信息
             .allowCredentials(true)
             // 哪些HTTP方法允许跨域访问
-            .allowedMethods("GET", "POST")
+            .allowedMethods("*")
             .allowedHeaders("*");
 
   }

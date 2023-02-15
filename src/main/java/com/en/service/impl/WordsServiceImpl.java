@@ -5,8 +5,9 @@ import com.en.mapper.WordsMapper;
 import com.en.pojo.po.Words;
 import com.en.pojo.vo.list.WordsVo;
 import com.en.service.WordsService;
-import org.mapstruct.Mapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service()
 // @Service("WrodsService") 起个别名 也可以不要
@@ -18,6 +19,11 @@ public class WordsServiceImpl extends ServiceImpl<WordsMapper, Words> implements
     System.out.println(baseMapper.selectWord(word));
 
     return baseMapper.selectWord(word);
+  }
+
+  @Override
+  public List<WordsVo> getWordList() {
+    return baseMapper.selectWordList();
   }
 }
 

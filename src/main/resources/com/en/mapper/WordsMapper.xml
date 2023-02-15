@@ -15,17 +15,24 @@
         </collection>
     </resultMap>
 
+    <sql id="sqlListAll">
+        SELECT w.id,
+               w.word,
+               w.mean_cn,
+               w.level,
+               s.id sentence_id,
+               s.sentence,
+               s.sentence_cn
+        FROM words w
+                 JOIN word_sentence ws on w.id = ws.word_id
+                 JOIN sentences s on s.id = ws.sentence_id
+    </sql>
+
+    <select id="selectWordList" resultMap="rmSelectWord">
+        <include refid="sqlListAll"></include>
+    </select>
+
     <select id="selectWord" resultMap="rmSelectWord">
-            SELECT w.id,
-                   w.word,
-                   w.mean_cn,
-                   w.level,
-                   s.id sentence_id,
-                   s.sentence,
-                   s.sentence_cn
-            FROM words w
-                     JOIN word_sentence ws on w.id = ws.word_id
-                     JOIN sentences s on s.id = ws.sentence_id
-            WHERE w.word = #{word}
+        <include refid="sqlListAll"></include> WHERE w.word = #{word}
     </select>
 </mapper>

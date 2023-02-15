@@ -104,5 +104,14 @@ public class WordsController {
 
     return R.ok("删除成功");
   }
+
+  /**
+   * 获取单词列表
+   * @return
+   */
+  @GetMapping("/list")
+  public R getWordList(){
+    return R.success(service.getWordList());
+  }
 }
 
