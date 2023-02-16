@@ -6,11 +6,9 @@ import lombok.Data;
 
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class CollectsReqVo{
+public class CollectWordReqVo{
     
-    private Integer id;
+    private Integer collectId;
     
-    private Integer userId;
-    //收藏夹名称
-    private String name;
+    private Integer wordId;
 }

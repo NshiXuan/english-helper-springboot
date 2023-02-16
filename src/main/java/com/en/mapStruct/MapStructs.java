@@ -1,8 +1,10 @@
 package com.en.mapStruct;
 
+import com.en.pojo.po.Collects;
 import com.en.pojo.po.Users;
 import com.en.pojo.po.Words;
 import com.en.pojo.vo.list.WordsVo;
+import com.en.pojo.vo.req.save.CollectsReqVo;
 import com.en.pojo.vo.req.save.UsersReqVo;
 import com.en.pojo.vo.req.save.WordsReqVo;
 import org.mapstruct.Mapper;
@@ -23,6 +25,8 @@ public interface MapStructs {
   Words reqVo2po(WordsReqVo reqVo);
 
   Users reqVo2po(UsersReqVo reqVo);
+
+  Collects reqVo2po(CollectsReqVo reqVo);
 
   // 把WordReqVo数据转成List<Sentences>
   // List<Sentences> reqVO2List(List<> reqVo);

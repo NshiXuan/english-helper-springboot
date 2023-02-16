@@ -3,6 +3,34 @@
   <component name="EasyCodeTableSetting">
     <option name="tableInfoMap">
       <map>
+        <entry key="english.collect_word">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="collectId" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="wordId" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="CollectWord" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="english-helper" />
+              <option name="savePackageName" value="com.en" />
+              <option name="savePath" value="./src/main/java/com/en" />
+              <option name="templateGroupName" value="MybatisPlus_SX" />
+            </TableInfoDTO>
+          </value>
+        </entry>
         <entry key="english.collects">
           <value>
             <TableInfoDTO>
