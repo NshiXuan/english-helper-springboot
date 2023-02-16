@@ -72,11 +72,23 @@ public class UsersController extends BaseController<Users, UsersReqVo> {
 
   /**
    * 获取用户列表
+   *
    * @return
    */
   @GetMapping("list")
-  public R getUserList(){
-    return  R.success(service.list());
+  public R getUserList() {
+    return R.success(service.list());
+  }
+
+  /**
+   * @param name
+   * @return
+   */
+  @GetMapping
+  public R getUserByName(String name) {
+    LambdaQueryWrapper<Users> wrapper = new LambdaQueryWrapper<>();
+    wrapper.eq(Users::getUsername, name);
+    return R.success(service.getOne(wrapper));
   }
 
 
