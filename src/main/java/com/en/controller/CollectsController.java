@@ -41,12 +41,25 @@ public class CollectsController extends BaseController<Collects, CollectsReqVo> 
   private WordsService wordsService;
 
   /**
+   * 如果用户id查询收藏夹列表
+   *
+   * @param user_id
+   * @return
+   */
+  @GetMapping("user")
+  public R getCollectById(Integer user_id) {
+    LambdaQueryWrapper<Collects> wrapper = new LambdaQueryWrapper<>();
+    wrapper.eq(Collects::getUserId, user_id);
+    return R.success(service.list(wrapper));
+  }
+
+  /**
    * 通过名称查询收藏夹
    *
    * @param name
    * @return
    */
-  @GetMapping
+  @GetMapping("name")
   public R getCollectByName(String name) {
     // 1.通过名称查询收藏夹
     LambdaQueryWrapper<Collects> collectWrapper = new LambdaQueryWrapper<>();
@@ -81,6 +94,39 @@ public class CollectsController extends BaseController<Collects, CollectsReqVo> 
   }
 
   /**
+   * 获取收藏夹列表
+   *
+   * @return
+   */
+  @GetMapping("/list")
+  public R getCollectList() {
+    // 1. 构造返回的CollectVo数组
+    List<CollectsVo> collectsListVo = new ArrayList<>();
+
+    // 2. 获取po List
+    List<Collects> collectsListRes = service.list();
+
+    // 3. 通过po List的user_id获取用户数据
+    for (Collects collectsRes : collectsListRes) {
+      CollectsVo collectsVo = new CollectsVo();
+
+      // 3.1 通过user_id获取用户数据
+      Users user = usersService.getById(collectsRes.getUserId());
+
+      // 3.2 赋给CollectsVo
+      collectsVo.setUser(user);
+      collectsVo.setId(collectsRes.getId());
+      collectsVo.setName(collectsRes.getName());
+      System.out.println(collectsVo);
+
+      // 3.3 添加给collectsListVo
+      collectsListVo.add(collectsVo);
+    }
+
+    return R.success(collectsListVo);
+  }
+
+  /**
    * 收藏单词
    *
    * @return
@@ -92,6 +138,16 @@ public class CollectsController extends BaseController<Collects, CollectsReqVo> 
     collectWord.setCollectId(reqVo.getCollectId());
     collectWord.setWordId(reqVo.getWordId());
     System.out.println(collectWord);
+
+    // 1.查收是否已收藏
+    LambdaQueryWrapper<CollectWord> wrapper = new LambdaQueryWrapper<>();
+    // 单词id与收藏夹id都存在则改收藏夹中单词已存在
+    wrapper.eq(CollectWord::getWordId, reqVo.getWordId());
+    wrapper.eq(CollectWord::getCollectId, reqVo.getCollectId());
+    if (collectWordService.getOne(wrapper) != null) {
+      return R.error("单词已存在");
+    }
+
     if (collectWordService.save(collectWord)) {
       return R.ok("添加成功");
     }
@@ -117,18 +173,18 @@ public class CollectsController extends BaseController<Collects, CollectsReqVo> 
 
   // 删除
   @DeleteMapping("delete")
-  public R deleteCollect(Integer id){
+  public R deleteCollect(Integer id) {
     // 1.通过收藏夹id删除收藏夹
     service.removeById(id);
 
     // 2.通过收藏夹id删除收藏夹与单词的联系
-    LambdaQueryWrapper<CollectWord> cwWrapper=new LambdaQueryWrapper<>();
-    cwWrapper.eq(CollectWord::getCollectId,id);
-    if(collectWordService.remove(cwWrapper)){
+    LambdaQueryWrapper<CollectWord> cwWrapper = new LambdaQueryWrapper<>();
+    cwWrapper.eq(CollectWord::getCollectId, id);
+    if (collectWordService.remove(cwWrapper)) {
       return R.ok("删除成功");
     }
 
-    return R.error("删除失败");
+    return R.ok("删除成功");
   }
 
 
